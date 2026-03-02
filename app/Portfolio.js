@@ -22,15 +22,15 @@ const projects = [
   {
     title: "Data Unity Platform",
     subtitle: "Turning Customer Chaos Into a Single Source of Truth",
-    icon: "\u{1F517}", color: COLORS.accent,
-    problem: "The company operates 15+ SaaS products, each with its own customer database. The same customer \u2014 say a yoga studio owner \u2014 could appear as 15 different records across 15 different systems. Nobody knew the real customer count, revenue per customer, or churn rate.",
-    solution: "I built the Data Unity platform \u2014 a customer identity resolution engine that assigns every customer a Universal Customer ID (UCID). The system ingests records from all 15+ products, matches them using multi-attribute logic (name, email, address, business details), and merges duplicates into a single golden record.",
+    icon: "🔗", color: COLORS.accent,
+    problem: "The company operates 15+ SaaS products, each with its own customer database. The same customer — say a yoga studio owner — could appear as 15 different records across 15 different systems. Nobody knew the real customer count, revenue per customer, or churn rate.",
+    solution: "I built the Data Unity platform — a customer identity resolution engine that assigns every customer a Universal Customer ID (UCID). The system ingests records from all 15+ products, matches them using multi-attribute logic (name, email, address, business details), and merges duplicates into a single golden record.",
     impact: [
       "Unified millions of customer records across 15+ products into one identity graph",
       "Enabled the first-ever accurate customer count and true revenue-per-customer metrics for leadership",
       "Reduced duplicate customer records that were inflating business metrics",
     ],
-    techDetail: "Built on AWS \u2014 Glue for ETL orchestration, Lambda for event-driven processing, Step Functions for pipeline workflows, S3 for data lake storage, and Redshift as the analytical warehouse. Implemented incremental loading with bookmark-based extraction to process only new/changed records. Designed a star schema with DURS (fact table tracking monthly volume, revenue, and transactions per customer per processor) and DUCS (dimension table holding the golden customer record).",
+    techDetail: "Built on AWS — Glue for ETL orchestration, Lambda for event-driven processing, Step Functions for pipeline workflows, S3 for data lake storage, and Redshift as the analytical warehouse. Implemented incremental loading with bookmark-based extraction to process only new/changed records. Designed a star schema with DURS (fact table tracking monthly volume, revenue, and transactions per customer per processor) and DUCS (dimension table holding the golden customer record).",
     tech: ["AWS Glue", "Lambda", "Step Functions", "S3", "Redshift", "Python", "SQL"],
     metrics: [{ label: "Products Unified", value: "15+" }, { label: "Payment Processors", value: "5" }, { label: "Records Processed", value: "Millions" }],
     size: "hero",
@@ -38,15 +38,15 @@ const projects = [
   {
     title: "Customer Health Dashboard",
     subtitle: "Giving Leadership a Real-Time Pulse on Every Customer",
-    icon: "\u{1F4CA}", color: COLORS.lime,
+    icon: "📊", color: COLORS.lime,
     problem: "Executives had no unified view of customer health. Subscription data lived in Stripe, payment processing revenue was scattered across 5 processors, and customer success scores were in Vitally. Leaders couldn't answer: 'Which customers are growing? Which are at risk?'",
-    solution: "I designed and built the Customer Health Dashboard \u2014 a Power BI reporting system that combines subscription revenue (MRR from Stripe), payment processing revenue (from 5 processors), and customer success data (from Vitally's parent-child hierarchy) into a single executive-level view.",
+    solution: "I designed and built the Customer Health Dashboard — a Power BI reporting system that combines subscription revenue (MRR from Stripe), payment processing revenue (from 5 processors), and customer success data (from Vitally's parent-child hierarchy) into a single executive-level view.",
     impact: [
       "Gave leadership their first unified view of subscription + payment revenue per customer",
       "Enabled customer success teams to proactively identify at-risk accounts before churn",
       "Automated monthly reporting that previously required days of manual spreadsheet work",
     ],
-    techDetail: "Built a Redshift stored procedure that processes data from Stripe Billing (subscriptions, MRR calculations), 5 payment processors (Stripe, ProPay, CardConnect, OpenEdge, Spreedly), and Vitally's customer success platform. Implemented SCD Type 1 change detection using hash-key comparison to track how customer health metrics evolve over time. The procedure handles complex status prioritization logic \u2014 when a customer has multiple subscriptions, it intelligently determines the correct overall status.",
+    techDetail: "Built a Redshift stored procedure that processes data from Stripe Billing (subscriptions, MRR calculations), 5 payment processors (Stripe, ProPay, CardConnect, OpenEdge, Spreedly), and Vitally's customer success platform. Implemented SCD Type 1 change detection using hash-key comparison to track how customer health metrics evolve over time. The procedure handles complex status prioritization logic — when a customer has multiple subscriptions, it intelligently determines the correct overall status.",
     tech: ["Power BI", "Redshift", "Stripe API", "Vitally", "SQL", "Python"],
     metrics: [{ label: "Revenue Streams", value: "2" }, { label: "Data Sources", value: "7+" }, { label: "SCD Tracking", value: "Type 1" }],
     size: "large",
@@ -54,68 +54,68 @@ const projects = [
   {
     title: "Salesforce CRM Integration",
     subtitle: "Bridging Sales Data With the Data Warehouse",
-    icon: "\u2601\uFE0F", color: COLORS.amber,
+    icon: "☁️", color: COLORS.amber,
     problem: "The sales team tracked accounts, contacts, and opportunities in Salesforce, but this data was completely disconnected from the data warehouse. Analytics teams couldn't combine sales pipeline data with customer usage and payment data.",
-    solution: "I architected an end-to-end integration pipeline using AWS AppFlow to automatically sync 4 Salesforce objects (Accounts, Contacts, Opportunities, Users) into Redshift through a three-stage medallion architecture: staging \u2192 curated \u2192 final production tables.",
+    solution: "I architected an end-to-end integration pipeline using AWS AppFlow to automatically sync 4 Salesforce objects (Accounts, Contacts, Opportunities, Users) into Redshift through a three-stage medallion architecture: staging → curated → final production tables.",
     impact: [
       "Connected Salesforce pipeline data with customer and payment data for the first time",
       "Eliminated manual CSV exports that the sales ops team was doing weekly",
       "Enabled cross-functional reporting combining sales, subscriptions, and payment revenue",
     ],
-    techDetail: "Used AWS AppFlow to extract Salesforce data as Parquet files into S3, then COPY commands to load into Redshift staging tables. Built stored procedures for each transformation stage. Solved a critical Parquet column-ordering issue \u2014 COPY commands map columns positionally, not by name, so staging tables must exactly match Parquet file column order.",
+    techDetail: "Used AWS AppFlow to extract Salesforce data as Parquet files into S3, then COPY commands to load into Redshift staging tables. Built stored procedures for each transformation stage. Solved a critical Parquet column-ordering issue — COPY commands map columns positionally, not by name, so staging tables must exactly match Parquet file column order.",
     tech: ["AWS AppFlow", "Salesforce", "S3", "Redshift", "Parquet", "SQL"],
-    metrics: [{ label: "SF Objects", value: "4" }, { label: "Pipeline Stages", value: "3" }, { label: "Automated", value: "\u2713" }],
+    metrics: [{ label: "SF Objects", value: "4" }, { label: "Pipeline Stages", value: "3" }, { label: "Automated", value: "✓" }],
     size: "large",
   },
   {
     title: "Payment Revenue Analytics",
     subtitle: "Unified Revenue View Across 5 Processors",
-    icon: "\u{1F4B0}", color: "#8b5cf6",
-    problem: "Revenue flowed through 5 different payment processors \u2014 each with different data formats and field names. Finance couldn't get a consolidated revenue picture without weeks of manual reconciliation.",
-    solution: "I built the DURS reporting system \u2014 a unified fact table that standardizes transaction data from all 5 processors into one consistent format, with monthly grain per customer per processor per payment method.",
+    icon: "💰", color: "#8b5cf6",
+    problem: "Revenue flowed through 5 different payment processors — each with different data formats and field names. Finance couldn't get a consolidated revenue picture without weeks of manual reconciliation.",
+    solution: "I built the DURS reporting system — a unified fact table that standardizes transaction data from all 5 processors into one consistent format, with monthly grain per customer per processor per payment method.",
     impact: [
       "Created the company's first unified view of payment processing revenue",
       "Enabled Finance to categorize revenue into 4 reporting tiers for accurate forecasting",
       "Distinguished real revenue from whitespace opportunities for upsell targeting",
     ],
-    techDetail: "Built a 7-block UNION ALL stored procedure \u2014 one block per processor source. Each block preprocesses raw data, joins with merchant tables for account grouping, and links to product_customer for UCID resolution. Handles product remapping and gateway-level reporting category assignment.",
+    techDetail: "Built a 7-block UNION ALL stored procedure — one block per processor source. Each block preprocesses raw data, joins with merchant tables for account grouping, and links to product_customer for UCID resolution. Handles product remapping and gateway-level reporting category assignment.",
     tech: ["Redshift", "SQL", "Python", "Stripe", "Power BI"],
-    metrics: [{ label: "Processors", value: "5" }, { label: "Revenue Tiers", value: "4" }, { label: "Monthly Grain", value: "\u2713" }],
+    metrics: [{ label: "Processors", value: "5" }, { label: "Revenue Tiers", value: "4" }, { label: "Monthly Grain", value: "✓" }],
     size: "medium",
   },
   {
     title: "ETL Pipeline Orchestration",
     subtitle: "Self-Healing Pipelines That Run While I Sleep",
-    icon: "\u2699\uFE0F", color: "#ec4899",
-    problem: "Data pipelines were fragile \u2014 a single upstream change could silently corrupt downstream reports. Failures were discovered days later by business users.",
+    icon: "⚙️", color: "#ec4899",
+    problem: "Data pipelines were fragile — a single upstream change could silently corrupt downstream reports. Failures were discovered days later by business users.",
     solution: "I redesigned the pipeline architecture with automated error handling, incremental bookmark-based loading, comprehensive backup procedures, and audit trails tracking every change to the customer identity system.",
     impact: [
       "Reduced pipeline failure recovery time from days to minutes",
       "Implemented backup-before-modify pattern preventing data loss incidents",
       "Built UCID change detection so every identity merge or split is auditable",
     ],
-    techDetail: "AWS Step Functions orchestrate multi-stage workflows: extract (bookmark-based incremental pulls) \u2192 transform (Glue jobs with Python/PySpark) \u2192 load (Redshift COPY). Built Lambda functions for file validation, bookmark management, and failure alerting. Solved silent data corruption like scientific notation converting merchant IDs.",
+    techDetail: "AWS Step Functions orchestrate multi-stage workflows: extract (bookmark-based incremental pulls) → transform (Glue jobs with Python/PySpark) → load (Redshift COPY). Built Lambda functions for file validation, bookmark management, and failure alerting. Solved silent data corruption like scientific notation converting merchant IDs.",
     tech: ["Step Functions", "Lambda", "Glue", "S3", "Python", "Redshift"],
-    metrics: [{ label: "Recovery", value: "Minutes" }, { label: "Incremental", value: "\u2713" }, { label: "Auto-Recovery", value: "\u2713" }],
+    metrics: [{ label: "Recovery", value: "Minutes" }, { label: "Incremental", value: "✓" }, { label: "Auto-Recovery", value: "✓" }],
     size: "medium",
   },
 ];
 
 const experience = [
   {
-    role: "Data Engineer", company: "Protech \u00B7 TogetherWork Holdings", location: "Atlanta, GA", period: "Aug 2024 \u2014 Present",
-    desc: "Leading the design and maintenance of the Data Unity platform \u2014 a customer data unification engine serving 15+ SaaS products. Building ETL pipelines on AWS, integrating Salesforce CRM data, and developing executive dashboards tracking subscription and payment revenue.",
+    role: "Data Engineer", company: "Protech · TogetherWork Holdings", location: "Atlanta, GA", period: "Aug 2024 — Present",
+    desc: "Leading the design and maintenance of the Data Unity platform — a customer data unification engine serving 15+ SaaS products. Building ETL pipelines on AWS, integrating Salesforce CRM data, and developing executive dashboards tracking subscription and payment revenue.",
     highlights: ["Architected the UCID identity resolution system unifying millions of customer records", "Built Salesforce-to-Redshift integration using AWS AppFlow with medallion architecture", "Developed Customer Health Dashboard combining Stripe, 5 payment processors, and Vitally", "Designed star schema (DURS fact + DUCS dimension) for scalable multi-product analytics"],
     current: true,
   },
   {
-    role: "Business Intelligence Developer", company: "Protech", location: "", period: "Jan 2022 \u2014 Jul 2024",
+    role: "Business Intelligence Developer", company: "Protech", location: "", period: "Jan 2022 — Jul 2024",
     desc: "Built and modernized business intelligence solutions, migrating legacy SSRS reports to interactive Power BI dashboards and establishing self-service analytics for business stakeholders.",
     highlights: ["Migrated 20+ legacy SSRS reports to modern Power BI dashboards", "Designed data models and wrote complex SQL for KPI tracking and trend analysis", "Enabled self-service analytics reducing ad-hoc report requests"],
     current: false,
   },
   {
-    role: "CRM Developer & Report Developer", company: "Protech", location: "", period: "Jan 2019 \u2014 Dec 2021",
+    role: "CRM Developer & Report Developer", company: "Protech", location: "", period: "Jan 2019 — Dec 2021",
     desc: "Developed reporting solutions within Microsoft Dynamics 365 CRM. Built the SQL and data analysis foundation that drove my transition into data engineering.",
     highlights: ["Built SSRS reports integrated with Dynamics 365 CRM for sales and operations", "Developed SSIS packages for data migration between CRM and external sources", "Wrote stored procedures and complex SQL for data extraction and transformation"],
     current: false,
@@ -123,9 +123,9 @@ const experience = [
 ];
 
 const certs = [
-  { name: "AWS Data Engineer Associate", status: "In Progress", icon: "\u{1F3AF}" },
-  { name: "Databricks DE Associate", status: "Planned", icon: "\u{1F4CB}" },
-  { name: "SnowPro Core", status: "Planned", icon: "\u{1F4CB}" },
+  { name: "AWS Data Engineer Associate", status: "In Progress", icon: "🎯" },
+  { name: "Databricks DE Associate", status: "Planned", icon: "📋" },
+  { name: "SnowPro Core", status: "Planned", icon: "📋" },
 ];
 
 function Starfield() {
@@ -191,14 +191,14 @@ function ProjectCard({ project, index }) {
         <div style={{maxHeight:expanded?600:0,overflow:"hidden",transition:"max-height 0.4s ease"}}>
           <div style={{padding:"0 28px"}}>
             <div style={{marginBottom:16}}><p style={{fontSize:12,color:COLORS.lime,fontWeight:700,letterSpacing:1.5,marginBottom:8,fontFamily:"'JetBrains Mono',monospace"}}>BUSINESS IMPACT</p>
-              {project.impact.map((item,i)=>(<div key={i} style={{display:"flex",gap:8,marginBottom:6,fontSize:14,color:COLORS.textMuted,lineHeight:1.6}}><span style={{color:COLORS.lime,flexShrink:0}}>{"\u2192"}</span><span>{item}</span></div>))}
+              {project.impact.map((item,i)=>(<div key={i} style={{display:"flex",gap:8,marginBottom:6,fontSize:14,color:COLORS.textMuted,lineHeight:1.6}}><span style={{color:COLORS.lime,flexShrink:0}}>{"→"}</span><span>{item}</span></div>))}
             </div>
             <div style={{marginBottom:16}}><p style={{fontSize:12,color:COLORS.accent,fontWeight:700,letterSpacing:1.5,marginBottom:6,fontFamily:"'JetBrains Mono',monospace"}}>TECHNICAL DEEP DIVE</p><p style={{fontSize:13,color:COLORS.textDim,lineHeight:1.75,margin:0}}>{project.techDetail}</p></div>
           </div>
         </div>
         <div style={{padding:"16px 28px 20px",borderTop:`1px solid ${COLORS.glassBorder}`,display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12}}>
           <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{project.tech.map(t=>(<span key={t} style={{padding:"3px 10px",borderRadius:4,background:"rgba(255,255,255,0.04)",border:`1px solid ${COLORS.glassBorder}`,fontSize:11,color:COLORS.textDim,fontFamily:"'JetBrains Mono',monospace"}}>{t}</span>))}</div>
-          <button onClick={()=>setExpanded(!expanded)} style={{padding:"6px 16px",borderRadius:6,border:`1px solid ${project.color}30`,background:`${project.color}10`,color:project.color,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"'JetBrains Mono',monospace",transition:"all 0.2s"}}>{expanded?"Show Less \u2191":"Impact & Details \u2193"}</button>
+          <button onClick={()=>setExpanded(!expanded)} style={{padding:"6px 16px",borderRadius:6,border:`1px solid ${project.color}30`,background:`${project.color}10`,color:project.color,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"'JetBrains Mono',monospace",transition:"all 0.2s"}}>{expanded?"Show Less ↑":"Impact & Details \u2193"}</button>
         </div>
       </GlassCard>
     </RevealSection>
@@ -275,7 +275,7 @@ export default function Portfolio() {
             {[{v:"15+",l:"Products Unified",c:COLORS.accent},{v:"5",l:"Payment Processors",c:COLORS.lime},{v:"7+",l:"Years in Data",c:COLORS.amber},{v:"M+",l:"Records Processed",c:"#8b5cf6"}].map(s=>(<div key={s.l} style={{textAlign:"center",padding:"16px 8px"}}><div style={{fontSize:32,fontWeight:800,color:s.c,fontFamily:"'JetBrains Mono',monospace",letterSpacing:-1}}>{s.v}</div><div style={{fontSize:12,color:COLORS.textDim,marginTop:4,fontWeight:500,letterSpacing:0.5}}>{s.l}</div></div>))}
           </div>
           <div style={{display:"flex",gap:12,justifyContent:"center"}}>
-            <button onClick={()=>scrollTo("projects")} style={{padding:"12px 28px",borderRadius:10,border:"none",background:COLORS.accent,color:"#fff",fontSize:14,fontWeight:600,cursor:"pointer",boxShadow:`0 4px 20px ${COLORS.accent}40`}}>See What I've Built \u2192</button>
+            <button onClick={()=>scrollTo("projects")} style={{padding:"12px 28px",borderRadius:10,border:"none",background:COLORS.accent,color:"#fff",fontSize:14,fontWeight:600,cursor:"pointer",boxShadow:`0 4px 20px ${COLORS.accent}40`}}>See What I've Built →</button>
             <button onClick={()=>scrollTo("contact")} style={{padding:"12px 28px",borderRadius:10,border:`1px solid ${COLORS.glassBorder}`,background:COLORS.glass,color:COLORS.text,fontSize:14,fontWeight:500,cursor:"pointer",backdropFilter:"blur(8px)"}}>Get In Touch</button>
           </div>
         </div>
@@ -293,10 +293,10 @@ export default function Portfolio() {
           <RevealSection delay={0.2}>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:16}}>
               {[
-                {label:"Cloud & Orchestration",desc:"Pipeline infrastructure on AWS",items:["AWS Glue","Lambda","S3","Step Functions","AppFlow"],icon:"\u2601\uFE0F"},
-                {label:"Data Platforms",desc:"Storage & compute engines",items:["Redshift","Snowflake","Databricks","Spark","Delta Lake"],icon:"\u{1F5C4}\uFE0F"},
+                {label:"Cloud & Orchestration",desc:"Pipeline infrastructure on AWS",items:["AWS Glue","Lambda","S3","Step Functions","AppFlow"],icon:"☁️"},
+                {label:"Data Platforms",desc:"Storage & compute engines",items:["Redshift","Snowflake","Databricks","Spark","Delta Lake"],icon:"🗄️"},
                 {label:"Languages & Analytics",desc:"Code + visualization",items:["Python","SQL","PySpark","Power BI","DAX"],icon:"\u26A1"},
-                {label:"Integrations",desc:"Connecting business systems",items:["Stripe API","Salesforce","Vitally","Parquet","Git"],icon:"\u{1F517}"},
+                {label:"Integrations",desc:"Connecting business systems",items:["Stripe API","Salesforce","Vitally","Parquet","Git"],icon:"🔗"},
               ].map(cat=>(<GlassCard key={cat.label} style={{padding:24}}>
                 <div style={{fontSize:24,marginBottom:8}}>{cat.icon}</div>
                 <h3 style={{fontSize:15,fontWeight:600,marginBottom:4,color:COLORS.text}}>{cat.label}</h3>
@@ -335,11 +335,11 @@ export default function Portfolio() {
                 <div style={{position:"absolute",left:4,top:8,width:18,height:18,borderRadius:"50%",background:exp.current?COLORS.accent:COLORS.glass,border:`2px solid ${exp.current?COLORS.accent:COLORS.glassBorder}`,animation:exp.current?"glow 3s ease-in-out infinite":"none"}} />
                 <GlassCard style={{padding:24}}>
                   <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:8,marginBottom:8}}>
-                    <div><h3 style={{fontSize:18,fontWeight:700,letterSpacing:-0.3}}>{exp.role}</h3><p style={{fontSize:14,color:COLORS.accent,fontWeight:500}}>{exp.company} {exp.location&&`\u00B7 ${exp.location}`}</p></div>
+                    <div><h3 style={{fontSize:18,fontWeight:700,letterSpacing:-0.3}}>{exp.role}</h3><p style={{fontSize:14,color:COLORS.accent,fontWeight:500}}>{exp.company} {exp.location&&`· ${exp.location}`}</p></div>
                     <span style={{padding:"4px 12px",borderRadius:6,background:exp.current?COLORS.accentSoft:COLORS.glass,border:`1px solid ${exp.current?`${COLORS.accent}30`:COLORS.glassBorder}`,color:exp.current?COLORS.accent:COLORS.textDim,fontSize:12,fontFamily:"'JetBrains Mono',monospace",fontWeight:500,whiteSpace:"nowrap"}}>{exp.period}</span>
                   </div>
                   <p style={{fontSize:14,color:COLORS.textMuted,lineHeight:1.7,marginBottom:12}}>{exp.desc}</p>
-                  <ul style={{listStyle:"none",padding:0}}>{exp.highlights.map((h,hi)=>(<li key={hi} style={{fontSize:13,color:COLORS.textDim,lineHeight:1.7,paddingLeft:16,position:"relative",marginBottom:4}}><span style={{position:"absolute",left:0,color:COLORS.accent}}>{"\u2192"}</span>{h}</li>))}</ul>
+                  <ul style={{listStyle:"none",padding:0}}>{exp.highlights.map((h,hi)=>(<li key={hi} style={{fontSize:13,color:COLORS.textDim,lineHeight:1.7,paddingLeft:16,position:"relative",marginBottom:4}}><span style={{position:"absolute",left:0,color:COLORS.accent}}>{"→"}</span>{h}</li>))}</ul>
                 </GlassCard>
               </div>
             </RevealSection>))}
@@ -376,11 +376,11 @@ export default function Portfolio() {
           </RevealSection>
           <RevealSection delay={0.2}>
             <GlassCard style={{padding:32}} hover={false}>
-              {formSent?(<div style={{textAlign:"center",padding:"40px 0",animation:"successPop 0.4s ease-out"}}><div style={{fontSize:48,marginBottom:16}}>{"\u2713"}</div><h3 style={{fontSize:20,fontWeight:700,marginBottom:8,color:COLORS.lime}}>Message Sent!</h3><p style={{color:COLORS.textMuted,fontSize:14}}>I'll get back to you shortly.</p></div>):(
+              {formSent?(<div style={{textAlign:"center",padding:"40px 0",animation:"successPop 0.4s ease-out"}}><div style={{fontSize:48,marginBottom:16}}>{"✓"}</div><h3 style={{fontSize:20,fontWeight:700,marginBottom:8,color:COLORS.lime}}>Message Sent!</h3><p style={{color:COLORS.textMuted,fontSize:14}}>I'll get back to you shortly.</p></div>):(
                 <div style={{display:"flex",flexDirection:"column",gap:16}}>
                   {[{key:"name",label:"Name",type:"text"},{key:"email",label:"Email",type:"email"}].map(field=>(<div key={field.key}><label style={{fontSize:12,color:COLORS.textDim,fontWeight:600,letterSpacing:0.5,marginBottom:6,display:"block"}}>{field.label}</label><input type={field.type} value={formData[field.key]} onChange={e=>setFormData(f=>({...f,[field.key]:e.target.value}))} style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1px solid ${COLORS.glassBorder}`,background:"rgba(255,255,255,0.03)",color:COLORS.text,fontSize:14,outline:"none"}} onFocus={e=>e.target.style.borderColor=`${COLORS.accent}50`} onBlur={e=>e.target.style.borderColor=COLORS.glassBorder} /></div>))}
                   <div><label style={{fontSize:12,color:COLORS.textDim,fontWeight:600,letterSpacing:0.5,marginBottom:6,display:"block"}}>Message</label><textarea rows={4} value={formData.message} onChange={e=>setFormData(f=>({...f,message:e.target.value}))} style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1px solid ${COLORS.glassBorder}`,background:"rgba(255,255,255,0.03)",color:COLORS.text,fontSize:14,outline:"none",resize:"vertical"}} onFocus={e=>e.target.style.borderColor=`${COLORS.accent}50`} onBlur={e=>e.target.style.borderColor=COLORS.glassBorder} /></div>
-                  <button onClick={handleSubmit} disabled={sending} style={{padding:"14px 32px",borderRadius:10,border:"none",background:sending?"#475569":`linear-gradient(135deg,${COLORS.accent},#2563eb)`,color:"#fff",fontSize:15,fontWeight:600,cursor:sending?"not-allowed":"pointer",boxShadow:sending?"none":`0 4px 20px ${COLORS.accent}30`,marginTop:8,opacity:sending?0.7:1}}>{sending?"Sending...":"Send Message \u2192"}</button>
+                  <button onClick={handleSubmit} disabled={sending} style={{padding:"14px 32px",borderRadius:10,border:"none",background:sending?"#475569":`linear-gradient(135deg,${COLORS.accent},#2563eb)`,color:"#fff",fontSize:15,fontWeight:600,cursor:sending?"not-allowed":"pointer",boxShadow:sending?"none":`0 4px 20px ${COLORS.accent}30`,marginTop:8,opacity:sending?0.7:1}}>{sending?"Sending...":"Send Message →"}</button>
                 </div>
               )}
             </GlassCard>
@@ -388,7 +388,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer style={{padding:"32px 24px",textAlign:"center",borderTop:`1px solid ${COLORS.glassBorder}`,position:"relative",zIndex:1}}><p style={{fontSize:13,color:COLORS.textDim}}>Mohan Perugu {"\u00B7"} Data Engineer {"\u00B7"} Atlanta, GA</p></footer>
+      <footer style={{padding:"32px 24px",textAlign:"center",borderTop:`1px solid ${COLORS.glassBorder}`,position:"relative",zIndex:1}}><p style={{fontSize:13,color:COLORS.textDim}}>Mohan Perugu {"·"} Data Engineer {"·"} Atlanta, GA</p></footer>
     </div>
   );
 }
