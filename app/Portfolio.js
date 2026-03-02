@@ -230,7 +230,8 @@ export default function Portfolio() {
   }, []);
 
   const scrollTo = (id) => { setActiveSection(id); document.getElementById(id)?.scrollIntoView({behavior:"smooth"}); };
-  const handleSubmit = () => { if(formData.name&&formData.email&&formData.message){setFormSent(true);setTimeout(()=>setFormSent(false),3000);setFormData({name:"",email:"",message:""});} };
+  const [sending, setSending] = useState(false);
+  const handleSubmit = async () => { if(!formData.name||!formData.email||!formData.message||sending) return; setSending(true); try { const res = await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({access_key:"09cea948-d407-4ffd-a91d-2fa3e8a6e3c5",name:formData.name,email:formData.email,message:formData.message,subject:"Portfolio Contact: "+formData.name,from_name:"Portfolio Site"})}); if(res.ok){setFormSent(true);setTimeout(()=>setFormSent(false),4000);setFormData({name:"",email:"",message:""});} } catch(e){console.error(e);} finally{setSending(false);} };
 
   return (
     <div style={{minHeight:"100vh",background:COLORS.bg,color:COLORS.text,fontFamily:"'DM Sans','Segoe UI',system-ui,sans-serif",overflowX:"hidden"}}>
@@ -379,7 +380,7 @@ export default function Portfolio() {
                 <div style={{display:"flex",flexDirection:"column",gap:16}}>
                   {[{key:"name",label:"Name",type:"text"},{key:"email",label:"Email",type:"email"}].map(field=>(<div key={field.key}><label style={{fontSize:12,color:COLORS.textDim,fontWeight:600,letterSpacing:0.5,marginBottom:6,display:"block"}}>{field.label}</label><input type={field.type} value={formData[field.key]} onChange={e=>setFormData(f=>({...f,[field.key]:e.target.value}))} style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1px solid ${COLORS.glassBorder}`,background:"rgba(255,255,255,0.03)",color:COLORS.text,fontSize:14,outline:"none"}} onFocus={e=>e.target.style.borderColor=`${COLORS.accent}50`} onBlur={e=>e.target.style.borderColor=COLORS.glassBorder} /></div>))}
                   <div><label style={{fontSize:12,color:COLORS.textDim,fontWeight:600,letterSpacing:0.5,marginBottom:6,display:"block"}}>Message</label><textarea rows={4} value={formData.message} onChange={e=>setFormData(f=>({...f,message:e.target.value}))} style={{width:"100%",padding:"12px 16px",borderRadius:10,border:`1px solid ${COLORS.glassBorder}`,background:"rgba(255,255,255,0.03)",color:COLORS.text,fontSize:14,outline:"none",resize:"vertical"}} onFocus={e=>e.target.style.borderColor=`${COLORS.accent}50`} onBlur={e=>e.target.style.borderColor=COLORS.glassBorder} /></div>
-                  <button onClick={handleSubmit} style={{padding:"14px 32px",borderRadius:10,border:"none",background:`linear-gradient(135deg,${COLORS.accent},#2563eb)`,color:"#fff",fontSize:15,fontWeight:600,cursor:"pointer",boxShadow:`0 4px 20px ${COLORS.accent}30`,marginTop:8}}>Send Message {"\u2192"}</button>
+                  <button onClick={handleSubmit} disabled={sending} style={{padding:"14px 32px",borderRadius:10,border:"none",background:sending?"#475569":`linear-gradient(135deg,${COLORS.accent},#2563eb)`,color:"#fff",fontSize:15,fontWeight:600,cursor:sending?"not-allowed":"pointer",boxShadow:sending?"none":`0 4px 20px ${COLORS.accent}30`,marginTop:8,opacity:sending?0.7:1}}>{sending?"Sending...":"Send Message \u2192"}</button>
                 </div>
               )}
             </GlassCard>
